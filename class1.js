@@ -42,3 +42,24 @@ console.log(`multiplication of ${a} and ${b} is ${a*b}`);
 console.log(`division of ${a} and ${b} is ${a/b}`);
 console.log(`modulus of ${a} and ${b} is ${a%b}`);
 
+//area and perimeter of shapes
+let l=7;
+let b=3;
+console.log(`area of rectangle with length ${l} and breadth ${b} is ${l*b}`);
+console.log(`perimeter of rectangle with length ${l} and breadth ${b} is ${2*(l+b)}`);
+
+let s =4;
+console.log(`area of square with sides ${s} is ${s*s}`);
+console.log(`perimeter of square with sides ${s} is ${4*s}`);
+
+let pi=3.14;
+let r=5;
+console.log(`perimeter of circle with radius ${3} is ${2*pi*r}`);
+console.log(`area of circle with radius ${3} is ${pi*r*r}`);
+
+let h=6;
+let a =2;
+let c = 1;
+let b=3;
+console.log(`area of triangle with base ${b} and height ${h} is ${b*h/2}`);
+console.log(`perimeter of triangle with sides ${a}, ${b} and ${c} is ${a+b+c}`);
