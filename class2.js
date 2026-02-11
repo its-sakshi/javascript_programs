@@ -11,3 +11,13 @@ let n ='hello';
 console.log(`type of ${n} is ${typeof(n)}`);
 let x= null;
 console.log(`type of ${x} is ${typeof(x)}`);
+
+//object creation
+let obj = {
+    item : "pencil",
+    price : 40,
+    show: function(){
+        console.log(`the price of ${this.item} is ${this.price}`);
+    }
+};
+obj.show();
