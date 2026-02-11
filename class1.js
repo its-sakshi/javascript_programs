@@ -32,3 +32,13 @@ let temp=c;
 c=d;
 d=temp;
 console.log(`after swapping c=${c} and d=${d}`);
+
+//arithmetic operation
+let a =5;
+let b =2;
+console.log(`addition of ${a} and ${b} is ${a+b}`);
+console.log(`subtraction of ${a} and ${b} is ${a-b}`);
+console.log(`multiplication of ${a} and ${b} is ${a*b}`);
+console.log(`division of ${a} and ${b} is ${a/b}`);
+console.log(`modulus of ${a} and ${b} is ${a%b}`);
+
