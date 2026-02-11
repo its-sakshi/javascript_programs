@@ -10,7 +10,7 @@ let f=Math.floor(a/100);
 console.log(`first digit of a 3 digit number ${b} is ${f}`);
 console.log(`last digit of a 2 digit number ${b} is ${b%100}`);
 
-//swapping using third variable 
+//swapping using addition and subtraction
 let c=5;
 let d=6;
 console.log(`before swapping c=${c} and d=${d}`);
@@ -19,7 +19,18 @@ d=c-d;
 c=c-d;
 console.log(`after swapping c=${c} and d=${d}`);
 
+//swapping using multiplication & division
+let c=5;
+let d=6;
+console.log(`before swapping c=${c} and d=${d}`);
+c=c*d;
+d=c/d;
+c=c/d
+console.log(`after swapping c=${c} and d=${d}`);
+
 //swapping without third variable
+let c=5;
+let d=6;
 console.log(`before swapping c=${c} and d=${d}`);
 c=c^d;
 d=c^d;
@@ -27,6 +38,8 @@ c=c^d;
 console.log(`after swapping c=${c} and d=${d}`);
 
 //swapping without third variable
+let c=5;
+let d=6;
 console.log(`before swapping c=${c} and d=${d}`);
 let temp=c;
 c=d;
