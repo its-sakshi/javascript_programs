@@ -6,9 +6,9 @@ console.log(`last digit of a 2 digit number ${a} is ${a%10}`);
 
 //first and last digit of a 3 digit number
 let b=567;
-let f=Math.floor(a/100);
+let f=Math.floor(b/100);
 console.log(`first digit of a 3 digit number ${b} is ${f}`);
-console.log(`last digit of a 2 digit number ${b} is ${b%100}`);
+console.log(`last digit of a 2 digit number ${b} is ${b%10}`);
 
 //swapping using addition and subtraction
 let c=5;
