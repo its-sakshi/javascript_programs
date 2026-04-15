@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      text-align: center;
+      padding: 40px;
+    }
+
+    .quiz-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      width: 420px;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 12px;
+      width: 85%;
+      border: none;
+      border-radius: 6px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .correct {
+      background-color: #2ecc71 !important;
+    }
+
+    .wrong {
+      background-color: #e74c3c !important;
+    }
+
+    #nextBtn {
+      background-color: #2c3e50;
+    }
+
+    #restartBtn {
+      background-color: #8e44ad;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="quiz-box">
+    <h2 id="question">Loading...</h2>
+    <div id="answers"></div>
+
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+    <button id="restartBtn" onclick="restartQuiz()">Restart Quiz</button>
+
+    <p id="score"></p>
+  </div>
+
+  <script>
+    const quiz = [
+      {
+        question: "What is the capital of India?",
+        options: ["Mumbai", "Delhi", "Kolkata", "Chennai"],
+        answer: "Delhi"
+      },
+      {
+        question: "Which language runs in a web browser?",
+        options: ["Python", "Java", "C++", "JavaScript"],
+        answer: "JavaScript"
+      },
+      {
+        question: "What does CSS stand for?",
+        options: [
+          "Colorful Style Sheets",
+          "Cascading Style Sheets",
+          "Computer Style Sheets",
+          "Creative Style System"
+        ],
+        answer: "Cascading Style Sheets"
+      }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      answered = false;
+      const q = quiz[currentIndex];
+
+      document.getElementById("question").innerText = q.question;
+      document.getElementById("score").innerText = "";
+
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+
+        btn.onclick = () => checkAnswer(btn, option);
+
+        answersDiv.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(button, selected) {
+      if (answered) return;
+
+      answered = true;
+      const correctAnswer = quiz[currentIndex].answer;
+
+      const buttons = document.querySelectorAll("#answers button");
+
+      buttons.forEach(btn => {
+        if (btn.innerText === correctAnswer) {
+          btn.classList.add("correct");
+        } else if (btn.innerText === selected) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      if (selected === correctAnswer) {
+        score++;
+      }
+    }
+
+    function nextQuestion() {
+      if (!answered) {
+        alert("Please select an answer!");
+        return;
+      }
+
+      currentIndex++;
+
+      if (currentIndex < quiz.length) {
+        loadQuestion();
+      } else {
+        document.getElementById("question").innerText = "🎉 Quiz Finished!";
+        document.getElementById("answers").innerHTML = "";
+        document.getElementById("score").innerText =
+          "Your Score: " + score + "/" + quiz.length;
+
+        document.getElementById("restartBtn").style.display = "block";
+      }
+    }
+
+    function restartQuiz() {
+      currentIndex = 0;
+      score = 0;
+      document.getElementById("restartBtn").style.display = "none";
+      loadQuestion();
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
