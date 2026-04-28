@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BOM Mini Project</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #222;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    .card {
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    button {
+        margin: 5px;
+        padding: 8px 12px;
+        border: none;
+        background: #007BFF;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🌐 BOM Dashboard</h1>
+
+<div class="container">
+
+    <!-- Window -->
+    <div class="card">
+        <h3>Window Object</h3>
+        <p id="windowInfo"></p>
+        <button onclick="showAlert()">Alert</button>
+        <button onclick="openWindow()">Open Site</button>
+        <button onclick="resizeWindow()">Resize</button>
+    </div>
+
+    <!-- Navigator -->
+    <div class="card">
+        <h3>Navigator Object</h3>
+        <p id="navigatorInfo"></p>
+    </div>
+
+    <!-- Screen -->
+    <div class="card">
+        <h3>Screen Object</h3>
+        <p id="screenInfo"></p>
+    </div>
+
+    <!-- History -->
+    <div class="card">
+        <h3>History Object</h3>
+        <p id="historyInfo"></p>
+        <button onclick="goBack()">⬅ Back</button>
+        <button onclick="goForward()">➡ Forward</button>
+    </div>
+
+</div>
+
+<script>
+
+    // WINDOW OBJECT
+    function updateWindowInfo() {
+        document.getElementById("windowInfo").innerHTML =
+            "Width: " + window.innerWidth + "<br>" +
+            "Height: " + window.innerHeight;
+    }
+
+    function showAlert() {
+        alert("Hello! This is Window Object");
+    }
+
+    function openWindow() {
+        window.open("https://www.google.com", "_blank");
+    }
+
+    function resizeWindow() {
+        window.resizeTo(600, 400);
+    }
+
+    updateWindowInfo();
+
+    // NAVIGATOR OBJECT
+    document.getElementById("navigatorInfo").innerHTML =
+        "Browser: " + navigator.appName + "<br>" +
+        "Version: " + navigator.appVersion + "<br>" +
+        "Platform: " + navigator.platform + "<br>" +
+        "Language: " + navigator.language;
+
+    // SCREEN OBJECT
+    document.getElementById("screenInfo").innerHTML =
+        "Width: " + screen.width + "<br>" +
+        "Height: " + screen.height + "<br>" +
+        "Color Depth: " + screen.colorDepth;
+
+    // HISTORY OBJECT
+    document.getElementById("historyInfo").innerHTML =
+        "Pages visited: " + history.length;
+
+    function goBack() {
+        history.back();
+    }
+
+    function goForward() {
+        history.forward();
+    }
+
+    // Update window size on resize
+    window.onresize = updateWindowInfo;
+
+</script>
+
+</body>
+</html>
