@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Food Order Generator</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    text-align: center;
+    padding: 30px;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    width: 350px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #ff5722;
+}
+
+button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #ff5722;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e64a19;
+}
+
+#output {
+    margin-top: 15px;
+    text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🍔 Food Order</h1>
+
+    <!-- Inputs -->
+    <p>Select your items:</p>
+
+    <input type="checkbox" name="food" value="Pizza"> Pizza <br>
+    <input type="checkbox" name="food" value="Burger"> Burger <br>
+    <input type="checkbox" name="food" value="Pasta"> Pasta <br>
+    <input type="checkbox" name="food" value="Ice Cream"> Ice Cream <br>
+
+    <br>
+
+    <label>Enter Quantity:</label><br>
+    <input type="number" id="qty" min="1" placeholder="e.g. 2">
+
+    <br><br>
+
+    <!-- Event -->
+    <button onclick="generateOrder()">Generate Order</button>
+
+    <!-- Output -->
+    <div id="output"></div>
+</div>
+
+<script>
+
+// 🎯 Main Function (Event)
+function generateOrder() {
+
+    let foods = document.getElementsByName("food");
+    let quantity = document.getElementById("qty").value;
+    let selectedItems = [];
+
+    // 🔁 LOOP: collect selected items
+    for (let i = 0; i < foods.length; i++) {
+        if (foods[i].checked) {
+            selectedItems.push(foods[i].value);
+        }
+    }
+
+    let output = document.getElementById("output");
+
+    // ⚖️ CONDITIONAL LOGIC
+    if (selectedItems.length === 0) {
+        output.innerHTML = "<p style='color:red;'>❌ Please select at least one item!</p>";
+        return;
+    }
+
+    if (quantity === "" || quantity <= 0) {
+        output.innerHTML = "<p style='color:red;'>❌ Enter valid quantity!</p>";
+        return;
+    }
+
+    // 🔁 LOOP + innerHTML
+    let orderList = "<h3>🧾 Your Order:</h3><ul>";
+
+    for (let i = 0; i < selectedItems.length; i++) {
+        orderList += "<li>" + selectedItems[i] + " x " + quantity + "</li>";
+    }
+
+    orderList += "</ul>";
+
+    // 🎉 Dynamic Message
+    let message = "";
+    if (quantity > 3) {
+        message = "<p style='color:green;'>🎉 Big order! You get a free drink!</p>";
+    } else {
+        message = "<p>😊 Thanks for your order!</p>";
+    }
+
+    // 🧠 Final Output using innerHTML
+    output.innerHTML = orderList + message;
+}
+
+</script>
+
+</body>
+</html>
